@@ -3,7 +3,6 @@ import 'package:tic_tac_toe_mcc_project/player_information.dart';
 import './HomePage.dart';
 import './player_information.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -31,19 +30,14 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-
-
-
 class _MyHomePageState extends State<MyHomePage> {
   int pageNumber = 0;
 
-  Widget togglePage(number) {
+  void togglePage(number) {
     setState(() {
       pageNumber = number;
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -51,11 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
       return HomePage(togglePage);
     } else if (pageNumber == 1) {
       return PlayerInformation(togglePage);
-    }
-    else{
+    } else {
       return null;
     }
   }
-
-  }
-
+}
