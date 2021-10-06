@@ -16,9 +16,14 @@ class _GamePageState extends State<GamePage> {
   ElevatedButton.styleFrom(elevation: 5, minimumSize: Size(100, 50));
   @override
   Widget build(BuildContext context) {
-    return Column(children:[Container(child:Center(child: Text(widget.playerOneName+" "+widget.playerTwoName),)
-    ),
-      ElevatedButton(
+    return Scaffold(
+    body:Container(
+        padding: EdgeInsets.all(100),
+        child:Column(children:[
+          Container(child:Center(child: Text(widget.playerTwoName),)),
+      Container(
+      padding: EdgeInsets.all(50),
+      child:ElevatedButton(
     style: startButton,
     onPressed: () {
     widget.togglePage(prevPageNumber);
@@ -34,7 +39,7 @@ class _GamePageState extends State<GamePage> {
     style: TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 16))
-    ])),
+    ]))),
     ),      ElevatedButton(
         style: startButton,
         onPressed: () {
@@ -46,13 +51,13 @@ class _GamePageState extends State<GamePage> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.home_outlined),
+                  Icon(Icons.exit_to_app,size:16 ,),
                   Text("Home Page",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16))
                 ])),
       )
-    ]);
+    ])));
   }
 }

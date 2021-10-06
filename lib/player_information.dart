@@ -32,6 +32,8 @@ class _PlayerInformationState extends State<PlayerInformation> {
     if(playerOneController.text.isNotEmpty && playerTwoController.text.isNotEmpty){
       playerOne = playerOneController.text;
       playerTwo = playerTwoController.text;
+      print(playerOne);
+      print(playerTwo);
       widget.gamePage(pageNumber,playerOne,playerTwo);
     }
     else{

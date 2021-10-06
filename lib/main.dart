@@ -43,11 +43,17 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void gamePage(number, playerOneName, playerTwoName){
-    playerOneName = this.playerOneName;
-    playerTwoName = this.playerTwoName;
+  void gamePage(number, playerOne, playerTwo){
+    // playerOneName = this.playerOneName;
+    // playerTwoName = this.playerTwoName;
     setState(() {
       pageNumber = number;
+    });
+    setState(() {
+      playerOneName = playerOne;
+    });
+    setState(() {
+      playerTwoName = playerTwo;
     });
   }
 
