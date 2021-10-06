@@ -28,30 +28,32 @@ class _PlayerInformationState extends State<PlayerInformation> {
     super.dispose();
   }
 
-  void validation(){
-    if(playerOneController.text.isNotEmpty && playerTwoController.text.isNotEmpty){
+  void validation() {
+    if (playerOneController.text.isNotEmpty &&
+        playerTwoController.text.isNotEmpty) {
       playerOne = playerOneController.text;
       playerTwo = playerTwoController.text;
       print(playerOne);
       print(playerTwo);
-      widget.gamePage(pageNumber,playerOne,playerTwo);
-    }
-    else{
-      if(playerOneController.text.isEmpty){
+      widget.gamePage(pageNumber, playerOne, playerTwo);
+    } else {
+      if (playerOneController.text.isEmpty) {
         showDialog(
             context: context,
             builder: (context) {
               return AlertDialog(
                 content: Text("Player 1 Name is Empty"),
-              );});
+              );
+            });
       }
-      if(playerTwoController.text.isEmpty){
+      if (playerTwoController.text.isEmpty) {
         showDialog(
             context: context,
             builder: (context) {
               return AlertDialog(
                 content: Text("Player 2 Name is Empty"),
-              );});
+              );
+            });
       }
     }
   }
@@ -64,8 +66,12 @@ class _PlayerInformationState extends State<PlayerInformation> {
           centerTitle: true,
         ),
         body: Container(
+          height:double.infinity,
             color: Colors.brown[100],
-            child: Center(
+            child: SingleChildScrollView(
+                child:Container(
+                  padding: EdgeInsets.only(top:50),
+                    child:Center(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -79,7 +85,7 @@ class _PlayerInformationState extends State<PlayerInformation> {
                   Container(
                       padding: EdgeInsets.all(20),
                       child: TextField(
-                        controller: playerOneController,
+                          controller: playerOneController,
                           autocorrect: false,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
@@ -97,11 +103,11 @@ class _PlayerInformationState extends State<PlayerInformation> {
                   Container(
                       padding: EdgeInsets.all(20),
                       child: TextField(
-                        controller: playerTwoController,
+                          controller: playerTwoController,
                           decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: 'Enter Name of Player 2',
-                      )),
+                            border: OutlineInputBorder(),
+                            hintText: 'Enter Name of Player 2',
+                          )),
                       height: 100,
                       width: 300),
                   Row(
@@ -144,6 +150,6 @@ class _PlayerInformationState extends State<PlayerInformation> {
                                   ])),
                         ),
                       ]),
-                ]))));
+                ]))))));
   }
 }

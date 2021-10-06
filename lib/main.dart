@@ -36,16 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
   String playerOneName;
   String playerTwoName;
 
-
   void togglePage(number) {
     setState(() {
       pageNumber = number;
     });
   }
 
-  void gamePage(number, playerOne, playerTwo){
-    // playerOneName = this.playerOneName;
-    // playerTwoName = this.playerTwoName;
+  void gamePage(number, playerOne, playerTwo) {
     setState(() {
       pageNumber = number;
     });
@@ -61,11 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     if (pageNumber == 0) {
       return HomePage(togglePage);
-    } else if (pageNumber == 1){
-      return PlayerInformation(togglePage,gamePage);
-    }
-    else if(pageNumber == 2){
-      return GamePage(togglePage,playerOneName,playerTwoName);
+    } else if (pageNumber == 1) {
+      return PlayerInformation(togglePage, gamePage);
+    } else if (pageNumber == 2) {
+      return GamePage(togglePage, playerOneName, playerTwoName);
     }
   }
 }

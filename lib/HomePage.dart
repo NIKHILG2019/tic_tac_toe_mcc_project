@@ -11,6 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int pageNumber = 1;
+
   @override
   Widget build(BuildContext context) {
     final ButtonStyle startButton =
@@ -21,12 +22,15 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
         ),
         body: Container(
+          height: double.infinity,
             color: Colors.brown[100],
-            child: Center(
+            child: SingleChildScrollView(child:Center(
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                  Image.asset('assets/tic_tac_toe.gif'),
+                  Container(
+                    padding: EdgeInsets.only(top:40),
+                      child:Image.asset('assets/tic_tac_toe.gif')),
                   Container(
                       padding: EdgeInsets.only(top: 40),
                       child: Text("Instructions",
@@ -65,6 +69,6 @@ class _HomePageState extends State<HomePage> {
                               Icon(Icons.arrow_right_outlined)
                             ])),
                   ),
-                ]))));
+                ])))));
   }
 }
