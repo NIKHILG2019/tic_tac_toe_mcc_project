@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class PlayerInformation extends StatefulWidget {
   final Function togglePage;
+  final Function gamePage;
 
-  PlayerInformation(this.togglePage);
+  PlayerInformation(this.togglePage, this.gamePage);
 
   @override
   _PlayerInformationState createState() => _PlayerInformationState();
@@ -31,7 +32,7 @@ class _PlayerInformationState extends State<PlayerInformation> {
     if(playerOneController.text.isNotEmpty && playerTwoController.text.isNotEmpty){
       playerOne = playerOneController.text;
       playerTwo = playerTwoController.text;
-      widget.togglePage(pageNumber);
+      widget.gamePage(pageNumber,playerOne,playerTwo);
     }
     else{
       if(playerOneController.text.isEmpty){
