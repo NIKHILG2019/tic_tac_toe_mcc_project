@@ -19,7 +19,34 @@ class _PlayerInformationState extends State<PlayerInformation> {
     body: Container(
     color: Colors.brown[100],
     child:Center(
-    child: Row(
+    child: Column(
+     mainAxisAlignment: MainAxisAlignment.center,
+        children:[
+         Container(
+          child: Text("Player 1 Represents 'X'",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),),
+     Container(
+      padding: EdgeInsets.all(20),
+         child: TextField(
+          autocorrect: false,
+         decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: 'Enter Name of Player 1',
+         )),
+     height: 100,
+      width: 300
+     ),Container(
+          child: Text("Player 2 Represents 'O'",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),),
+     Container(
+         padding: EdgeInsets.all(20),
+         child: TextField(
+             decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Enter Name of Player 2',
+             )),
+         height: 100,
+         width: 300
+     ),
+     Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children:[
     ElevatedButton(
@@ -41,7 +68,7 @@ class _PlayerInformationState extends State<PlayerInformation> {
               mainAxisAlignment: MainAxisAlignment.center,
               children:[Text("Start",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),Icon(Icons.arrow_right_outlined)])),
      ),
-    ]))
+    ]),]))
    ));
   }
 }

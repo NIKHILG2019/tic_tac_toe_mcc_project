@@ -52,6 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
     } else if (pageNumber == 1) {
       return PlayerInformation(togglePage);
     }
+    else{
+      return null;
+    }
   }
 
   }
