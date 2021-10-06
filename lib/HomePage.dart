@@ -11,7 +11,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int pageNumber = 1;
-
   @override
   Widget build(BuildContext context) {
     final ButtonStyle startButton =

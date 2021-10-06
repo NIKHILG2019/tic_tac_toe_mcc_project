@@ -10,9 +10,48 @@ class PlayerInformation extends StatefulWidget {
 }
 
 class _PlayerInformationState extends State<PlayerInformation> {
-  int pageNumber = 0;
+  String playerOne;
+  String playerTwo;
+  int prevPageNumber = 0;
+  int pageNumber = 2;
   final ButtonStyle startButton =
       ElevatedButton.styleFrom(elevation: 5, minimumSize: Size(100, 50));
+  final playerOneController = TextEditingController();
+  final playerTwoController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    playerOneController.dispose();
+    playerTwoController.dispose();
+    super.dispose();
+  }
+
+  void validation(){
+    if(playerOneController.text.isNotEmpty && playerTwoController.text.isNotEmpty){
+      playerOne = playerOneController.text;
+      playerTwo = playerTwoController.text;
+      widget.togglePage(pageNumber);
+    }
+    else{
+      if(playerOneController.text.isEmpty){
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text("Player 1 Name is Empty"),
+              );});
+      }
+      if(playerTwoController.text.isEmpty){
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text("Player 2 Name is Empty"),
+              );});
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +76,7 @@ class _PlayerInformationState extends State<PlayerInformation> {
                   Container(
                       padding: EdgeInsets.all(20),
                       child: TextField(
+                        controller: playerOneController,
                           autocorrect: false,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
@@ -54,6 +94,7 @@ class _PlayerInformationState extends State<PlayerInformation> {
                   Container(
                       padding: EdgeInsets.all(20),
                       child: TextField(
+                        controller: playerTwoController,
                           decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Enter Name of Player 2',
@@ -66,7 +107,7 @@ class _PlayerInformationState extends State<PlayerInformation> {
                         ElevatedButton(
                           style: startButton,
                           onPressed: () {
-                            widget.togglePage(pageNumber);
+                            widget.togglePage(prevPageNumber);
                           },
                           child: Container(
                               height: 50,
@@ -84,7 +125,7 @@ class _PlayerInformationState extends State<PlayerInformation> {
                         ElevatedButton(
                           style: startButton,
                           onPressed: () {
-                            widget.togglePage(pageNumber);
+                            validation();
                           },
                           child: Container(
                               height: 50,
