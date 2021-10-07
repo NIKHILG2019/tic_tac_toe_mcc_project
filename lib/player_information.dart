@@ -66,90 +66,96 @@ class _PlayerInformationState extends State<PlayerInformation> {
           centerTitle: true,
         ),
         body: Container(
-          height:double.infinity,
+            height: double.infinity,
             color: Colors.brown[100],
             child: SingleChildScrollView(
-                child:Container(
-                  padding: EdgeInsets.only(top:50),
-                    child:Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                  Container(
-                    child: Text(
-                      "Player 1 Represents 'X'",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.all(20),
-                      child: TextField(
-                          controller: playerOneController,
-                          autocorrect: false,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter Name of Player 1',
-                          )),
-                      height: 100,
-                      width: 300),
-                  Container(
-                    child: Text(
-                      "Player 2 Represents 'O'",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                  ),
-                  Container(
-                      padding: EdgeInsets.all(20),
-                      child: TextField(
-                          controller: playerTwoController,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter Name of Player 2',
-                          )),
-                      height: 100,
-                      width: 300),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedButton(
-                          style: startButton,
-                          onPressed: () {
-                            widget.togglePage(prevPageNumber);
-                          },
-                          child: Container(
-                              height: 50,
-                              width: 100,
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.arrow_left_outlined),
-                                    Text("Back",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16))
-                                  ])),
-                        ),
-                        ElevatedButton(
-                          style: startButton,
-                          onPressed: () {
-                            validation();
-                          },
-                          child: Container(
-                              height: 50,
-                              width: 100,
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("Start",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16)),
-                                    Icon(Icons.arrow_right_outlined)
-                                  ])),
-                        ),
-                      ]),
-                ]))))));
+                child: Container(
+                    padding: EdgeInsets.only(top: 50),
+                    child: Center(
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                          Container(
+                            margin: EdgeInsets.all(10),
+                            child: Text(
+                              "Player 1 Represents 'X'",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ),
+                          Container(
+                              padding: EdgeInsets.all(20),
+                              child: TextField(
+                                  maxLength: 10,
+                                  controller: playerOneController,
+                                  autocorrect: false,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    hintText: 'Enter Name of Player 1',
+                                  )),
+                              height: 100,
+                              width: 300),
+                          Container(
+                            margin: EdgeInsets.all(10),
+                            child: Text(
+                              "Player 2 Represents 'O'",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 16),
+                            ),
+                          ),
+                          Container(
+                              padding: EdgeInsets.all(20),
+                              child: TextField(
+                                  maxLength: 10,
+                                  controller: playerTwoController,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    hintText: 'Enter Name of Player 2',
+                                  )),
+                              height: 100,
+                              width: 300),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                ElevatedButton(
+                                  style: startButton,
+                                  onPressed: () {
+                                    widget.togglePage(prevPageNumber);
+                                  },
+                                  child: Container(
+                                      height: 50,
+                                      width: 100,
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.arrow_left_outlined),
+                                            Text("Back",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16))
+                                          ])),
+                                ),
+                                ElevatedButton(
+                                  style: startButton,
+                                  onPressed: () {
+                                    validation();
+                                  },
+                                  child: Container(
+                                      height: 50,
+                                      width: 100,
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text("Start",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 16)),
+                                            Icon(Icons.arrow_right_outlined)
+                                          ])),
+                                ),
+                              ]),
+                        ]))))));
   }
 }

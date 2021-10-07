@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe_mcc_project/GameButton.dart';
 
 class GamePage extends StatefulWidget {
   final String playerOneName;
@@ -21,52 +22,157 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            padding: EdgeInsets.all(100),
-            child: Column(children: [
-              Container(
-                  child: Center(
-                child: Text(widget.playerTwoName),
-              )),
-              Container(
-                padding: EdgeInsets.all(50),
-                child: ElevatedButton(
-                    style: startButton,
-                    onPressed: () {
-                      widget.togglePage(prevPageNumber);
-                    },
-                    child: Container(
-                        height: 50,
-                        width: 100,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.arrow_left_outlined),
-                              Text("Back",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 16))
-                            ]))),
-              ),
-              ElevatedButton(
-                style: startButton,
-                onPressed: () {
-                  widget.togglePage(homePageNumber);
-                },
-                child: Container(
-                    height: 50,
+            height: double.infinity,
+            width: double.infinity,
+            color: Colors.brown[100],
+            padding: EdgeInsets.all(10),
+            child: SingleChildScrollView(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                    margin: EdgeInsets.all(30),
+                    alignment: Alignment.center,
                     width: 100,
+                    height: 50,
+                    color: Colors.brown[200],
+                    child: RotatedBox(
+                        quarterTurns: 2,
+                        child: Text(widget.playerTwoName,
+                            style: TextStyle(fontSize: 15)))),
+                Container(
+                    alignment: Alignment.topLeft,
+                    width: 400,
+                    height: 400,
+                    color: Colors.brown[200],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GameButton(""),
+                            Container(
+                              width: 5,
+                              height: 110,
+                              color: Colors.white,
+                              margin: EdgeInsets.all(2),
+                              padding: EdgeInsets.all(0),
+                            ),
+                            GameButton(""),
+                            Container(
+                              width: 5,
+                              height: 110,
+                              color: Colors.white,
+                              margin: EdgeInsets.all(2),
+                              padding: EdgeInsets.all(0),
+                            ),
+                            GameButton("")
+                          ],
+                        ),
+                        Container(
+                            padding: EdgeInsets.only(left: 30, right: 30),
+                            child: Divider(thickness: 5, color: Colors.white)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GameButton(""),
+                            Container(
+                              width: 5,
+                              height: 110,
+                              color: Colors.white,
+                              margin: EdgeInsets.all(2),
+                              padding: EdgeInsets.all(0),
+                            ),
+                            GameButton(""),
+                            Container(
+                              width: 5,
+                              height: 110,
+                              color: Colors.white,
+                              margin: EdgeInsets.all(2),
+                              padding: EdgeInsets.all(0),
+                            ),
+                            GameButton("")
+                          ],
+                        ),
+                        Container(
+                            padding: EdgeInsets.only(left: 30, right: 30),
+                            child: Divider(thickness: 5, color: Colors.white)),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GameButton(""),
+                            Container(
+                              width: 5,
+                              height: 110,
+                              color: Colors.white,
+                              margin: EdgeInsets.all(2),
+                              padding: EdgeInsets.all(0),
+                            ),
+                            GameButton(""),
+                            Container(
+                              width: 5,
+                              height: 110,
+                              color: Colors.white,
+                              margin: EdgeInsets.all(2),
+                              padding: EdgeInsets.all(0),
+                            ),
+                            GameButton("")
+                          ],
+                        )
+                      ],
+                    )),
+                Container(
+                    padding: EdgeInsets.only(top: 30),
                     child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Icon(
-                            Icons.exit_to_app,
-                            size: 16,
+                          Container(
+                            height: 50,
+                            width: 100,
+                            margin: EdgeInsets.all(10),
+                            child: ElevatedButton(
+                                style: startButton,
+                                onPressed: () {
+                                  widget.togglePage(prevPageNumber);
+                                },
+                                child: Container(
+                                    margin: EdgeInsets.all(10),
+                                    alignment: Alignment.center,
+                                    height: 30,
+                                    width: 40,
+                                    child: Icon(Icons.arrow_left_outlined))),
                           ),
-                          Text("Home Page",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16))
-                        ])),
-              )
-            ])));
+                          Container(
+                              margin: EdgeInsets.all(10),
+                              alignment: Alignment.center,
+                              width: 100,
+                              height: 50,
+                              color: Colors.brown[200],
+                              child: Text(widget.playerOneName,
+                                  style: TextStyle(fontSize: 15))),
+                          Container(
+                              height: 50,
+                              width: 100,
+                              margin: EdgeInsets.all(10),
+                              child: ElevatedButton(
+                                  style: startButton,
+                                  onPressed: () {
+                                    widget.togglePage(homePageNumber);
+                                  },
+                                  child: Container(
+                                      height: 30,
+                                      width: 40,
+                                      child:
+                                          Icon(Icons.exit_to_app, size: 20))))
+                        ]))
+              ],
+            ))));
   }
 }
+
+// Container(
+// child: Center(
+// child: Text(widget.playerTwoName),
+// ))

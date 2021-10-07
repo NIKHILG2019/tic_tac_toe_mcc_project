@@ -22,15 +22,16 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
         ),
         body: Container(
-          height: double.infinity,
+            height: double.infinity,
             color: Colors.brown[100],
-            child: SingleChildScrollView(child:Center(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+            child: SingleChildScrollView(
+                child: Center(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
                   Container(
-                    padding: EdgeInsets.only(top:40),
-                      child:Image.asset('assets/tic_tac_toe.gif')),
+                      padding: EdgeInsets.only(top: 40),
+                      child: Image.asset('assets/tic_tac_toe.gif')),
                   Container(
                       padding: EdgeInsets.only(top: 40),
                       child: Text("Instructions",
