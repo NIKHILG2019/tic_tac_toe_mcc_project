@@ -15,8 +15,31 @@ class GamePage extends StatefulWidget {
 class _GamePageState extends State<GamePage> {
   int homePageNumber = 0;
   int prevPageNumber = 1;
+  int winner = -1;
+  bool xAndOFlip = false;
+  List<List<int>> matrix = List.generate(3, (index) => List<int>.filled(3, -1),growable: false);
   final ButtonStyle startButton =
       ElevatedButton.styleFrom(elevation: 5, minimumSize: Size(100, 50));
+
+  void matrixComputation(int row, int column){
+    if(xAndOFlip){
+      setState(() {
+        matrix[row][column] = 0;
+      });
+      setState(() {
+        xAndOFlip = !xAndOFlip;
+      });
+    }
+    else{
+     setState(() {
+       matrix[row][column] = 1;
+     });
+     setState(() {
+       xAndOFlip = !xAndOFlip;
+     });
+    }
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +59,7 @@ class _GamePageState extends State<GamePage> {
                     alignment: Alignment.center,
                     width: 100,
                     height: 50,
-                    color: Colors.brown[200],
+                    color: winner==0? Colors.lightGreen : xAndOFlip?Colors.yellow:Colors.brown[200],
                     child: RotatedBox(
                         quarterTurns: 2,
                         child: Text(widget.playerTwoName,
@@ -52,7 +75,14 @@ class _GamePageState extends State<GamePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            GameButton(""),
+                            matrix[0][0] == -1 ? GameButton(0,0,matrixComputation) :
+                            Container(
+                              alignment: Alignment.center,
+                              width: 100,
+                              height: 100,
+                              child:Text(matrix[0][0] == 0 ? "O":"X",
+                              style: TextStyle(fontSize: 50, color: Colors.black)))
+                            ,
                             Container(
                               width: 5,
                               height: 110,
@@ -60,7 +90,13 @@ class _GamePageState extends State<GamePage> {
                               margin: EdgeInsets.all(2),
                               padding: EdgeInsets.all(0),
                             ),
-                            GameButton(""),
+                            matrix[0][1] == -1 ? GameButton(0,1,matrixComputation) :
+                            Container(
+                                alignment: Alignment.center,
+                                width: 100,
+                                height: 100,
+                                child:Text(matrix[0][1] == 0 ? "O":"X",
+                                    style: TextStyle(fontSize: 50, color: Colors.black))),
                             Container(
                               width: 5,
                               height: 110,
@@ -68,7 +104,13 @@ class _GamePageState extends State<GamePage> {
                               margin: EdgeInsets.all(2),
                               padding: EdgeInsets.all(0),
                             ),
-                            GameButton("")
+                            matrix[0][2] == -1 ? GameButton(0,2,matrixComputation) :
+                            Container(
+                                alignment: Alignment.center,
+                                width: 100,
+                                height: 100,
+                                child:Text(matrix[0][2] == 0 ? "O":"X",
+                                    style: TextStyle(fontSize: 50, color: Colors.black)))
                           ],
                         ),
                         Container(
@@ -77,7 +119,13 @@ class _GamePageState extends State<GamePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            GameButton(""),
+                            matrix[1][0] == -1 ? GameButton(1,0,matrixComputation) :
+                            Container(
+                                alignment: Alignment.center,
+                                width: 100,
+                                height: 100,
+                                child:Text(matrix[1][0] == 0 ? "O":"X",
+                                    style: TextStyle(fontSize: 50, color: Colors.black))),
                             Container(
                               width: 5,
                               height: 110,
@@ -85,7 +133,13 @@ class _GamePageState extends State<GamePage> {
                               margin: EdgeInsets.all(2),
                               padding: EdgeInsets.all(0),
                             ),
-                            GameButton(""),
+                            matrix[1][1] == -1 ? GameButton(1,1,matrixComputation) :
+                            Container(
+                                alignment: Alignment.center,
+                                width: 100,
+                                height: 100,
+                                child:Text(matrix[1][1] == 0 ? "O":"X",
+                                    style: TextStyle(fontSize: 50, color: Colors.black))),
                             Container(
                               width: 5,
                               height: 110,
@@ -93,7 +147,13 @@ class _GamePageState extends State<GamePage> {
                               margin: EdgeInsets.all(2),
                               padding: EdgeInsets.all(0),
                             ),
-                            GameButton("")
+                            matrix[1][2] == -1 ? GameButton(1,2,matrixComputation) :
+                            Container(
+                                alignment: Alignment.center,
+                                width: 100,
+                                height: 100,
+                                child:Text(matrix[1][2] == 0 ? "O":"X",
+                                    style: TextStyle(fontSize: 50, color: Colors.black)))
                           ],
                         ),
                         Container(
@@ -102,7 +162,13 @@ class _GamePageState extends State<GamePage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            GameButton(""),
+                            matrix[2][0] == -1 ? GameButton(2,0,matrixComputation) :
+                            Container(
+                                alignment: Alignment.center,
+                                width: 100,
+                                height: 100,
+                                child:Text(matrix[2][0] == 0 ? "O":"X",
+                                    style: TextStyle(fontSize: 50, color: Colors.black))),
                             Container(
                               width: 5,
                               height: 110,
@@ -110,7 +176,13 @@ class _GamePageState extends State<GamePage> {
                               margin: EdgeInsets.all(2),
                               padding: EdgeInsets.all(0),
                             ),
-                            GameButton(""),
+                            matrix[2][1] == -1 ? GameButton(2,1,matrixComputation) :
+                            Container(
+                                alignment: Alignment.center,
+                                width: 100,
+                                height: 100,
+                                child:Text(matrix[2][1] == 0 ? "O":"X",
+                                    style: TextStyle(fontSize: 50, color: Colors.black))),
                             Container(
                               width: 5,
                               height: 110,
@@ -118,7 +190,13 @@ class _GamePageState extends State<GamePage> {
                               margin: EdgeInsets.all(2),
                               padding: EdgeInsets.all(0),
                             ),
-                            GameButton("")
+                            matrix[2][2] == -1 ? GameButton(2,2,matrixComputation) :
+                            Container(
+                                alignment: Alignment.center,
+                                width: 100,
+                                height: 100,
+                                child:Text(matrix[2][2] == 0 ? "O":"X",
+                                    style: TextStyle(fontSize: 50, color: Colors.black))),
                           ],
                         )
                       ],
@@ -149,7 +227,7 @@ class _GamePageState extends State<GamePage> {
                               alignment: Alignment.center,
                               width: 100,
                               height: 50,
-                              color: Colors.brown[200],
+                              color: winner==1? Colors.lightGreen : !xAndOFlip?Colors.yellow:Colors.brown[200],
                               child: Text(widget.playerOneName,
                                   style: TextStyle(fontSize: 15))),
                           Container(
