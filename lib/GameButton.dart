@@ -5,7 +5,7 @@ class GameButton extends StatefulWidget {
   final int column;
   final Function matrixComputation;
 
-  const GameButton(this.row,this.column,this.matrixComputation);
+  const GameButton(this.row, this.column, this.matrixComputation);
 
   @override
   _GameButtonState createState() => _GameButtonState();
@@ -18,15 +18,15 @@ class _GameButtonState extends State<GameButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(2),
-      width: 100,
-      height: 100,
-      child:  ElevatedButton(
-    style: startButton,
-    child: Text("",
-    style: TextStyle(fontSize: 50, color: Colors.black)),
-    onPressed: () {widget.matrixComputation(widget.row,widget.column);}
-    )
-    );
+        padding: EdgeInsets.all(2),
+        width: 100,
+        height: 100,
+        child: ElevatedButton(
+            style: startButton,
+            child:
+                Text("", style: TextStyle(fontSize: 50, color: Colors.black)),
+            onPressed: () {
+              widget.matrixComputation(widget.row, widget.column);
+            }));
   }
-  }
+}
